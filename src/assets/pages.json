@@ -1,0 +1,23 @@
+{
+  "pages": [
+    {
+      "pageContext": "home",
+      "pageName": "Home",
+      "pageTitle": "Welcome to the Home Page",
+      "pageContent": "home"
+    },
+    {
+      "pageContext": "about",
+      "pageName": "About",
+      "pageTitle": "About Us",
+      "pageContent": "Info."
+    },
+    {
+      "pageContext": "contact",
+      "pageName": "Contact",
+      "pageTitle": "Contact Us",
+      "pageContent": "call us."
+    }
+  ],
+  "landingPage": "home"
+}
