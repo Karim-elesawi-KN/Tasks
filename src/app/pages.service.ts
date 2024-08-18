@@ -6,16 +6,16 @@ import { Injectable } from '@angular/core';
 export class PageService {
   private pages: any[] = [];
   private landingPage: string = '';
+  private pagesLoaded = false; // Track if pages have been loaded
 
   async loadPages(): Promise<void> {
-    try {
-      const response = await fetch('/assets/pages.json');
-      const data = await response.json();
-      this.pages = data.pages;
-      this.landingPage = data.landingPage;
-    } catch (error) {
-      console.error('Error loading pages:', error);
-    }
+    if (this.pagesLoaded) return; // Prevent reloading if already loaded
+
+    const response = await fetch('/assets/pages.json');
+    const data = await response.json();
+    this.pages = data.pages;
+    this.landingPage = data.landingPage;
+    this.pagesLoaded = true; // Mark as loaded
   }
 
   getPageById(id: string) {
@@ -30,3 +30,4 @@ export class PageService {
     return this.landingPage;
   }
 }
+
