@@ -12,5 +12,5 @@ export const routes: Routes = [
     redirectTo: '', 
     pathMatch: 'full'
   },
-  { path: ':id', component: PageComponent },
+  { path: ':pageContext', component: PageComponent },
 ];

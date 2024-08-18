@@ -18,7 +18,7 @@ export class PageComponent implements OnInit {
 
   ngOnInit() {
     const subscription = this.route.paramMap.subscribe(params => {
-      const context = params.get('id'); 
+      const context = params.get('pageContext'); 
       if (context) {
         this.page = this.pageService.getPageById(context);
       }
