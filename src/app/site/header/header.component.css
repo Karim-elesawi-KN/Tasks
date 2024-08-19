@@ -1,0 +1,30 @@
+/* Header Styling (if you have header content) */
+.header {
+  width: 90%;
+  height: 10%;
+  background-color: #333;
+  position: absolute;
+  right: 0px;
+}
+
+.div {
+  position: relative;
+}
+
+/* Button Styles */
+.btn {
+  color: lightgray;
+  background-color: #333;
+  border: 10%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: 1%;
+  top: 25%;
+}
+
+.btn:hover {
+  background-color: white; /* White background on hover */
+  color: #333; /* Dark gray text on hover */
+}

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from './site/sidebar/sidebar.component';
 import { PageService } from './pages.service';
+import { SiteComponent } from "./site/site.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SidebarComponent],
+  imports: [RouterOutlet, SiteComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
