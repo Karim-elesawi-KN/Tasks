@@ -1,4 +1,13 @@
-<div *ngIf="page">
-  <h1>{{ page.pageTitle }}</h1>
-  <p>{{ page.pageContent }}</p>
+<div>
+  <app-page-title
+    class="page-title"
+    *ngIf="page"
+    [title]="page.pageTitle"
+  ></app-page-title>
+
+  <app-page-content
+    *ngIf="page"
+    [page]="page"
+    class="page-content"
+  ></app-page-content>
 </div>

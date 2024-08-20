@@ -5,6 +5,8 @@
   background-color: #333;
   position: absolute;
   right: 0px;
+  border: lightgray 2px solid;
+
 }
 
 .div {

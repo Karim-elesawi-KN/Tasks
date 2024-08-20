@@ -1,0 +1,86 @@
+.widget-todolist {
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 8px; /* Inner padding */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below each widget */
+  }
+  
+  .widget-todolist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0; /* Light border below the header */
+  }
+  
+  .widget-todolist-header-title {
+    font-size: 18px; /* Larger font for the title */
+    font-weight: 600; /* Bold title */
+  }
+  
+  .widget-todolist-header-total {
+    font-size: 14px;
+    color: #6c757d; /* Muted text color */
+    text-align: right;
+  }
+  
+  /* .widget-todolist-body {
+  } */
+  
+  .widget-todolist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .widget-todolist-item:hover {
+    background-color: #f8f9fa; /* Light gray background on hover */
+  }
+  
+  .widget-todolist-input {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: 40px; /* Fixed width for alignment */
+    margin-right: 10px;
+  }
+  
+  .widget-todolist-content {
+    flex-grow: 1; /* Allow the content to take up remaining space */
+  }
+  
+  .widget-todolist-content h6 {
+    font-size: 16px; /* Main content font size */
+    margin-bottom: 5px;
+  }
+  
+  .widget-todolist-content p {
+    font-size: 14px;
+    color: #6c757d; /* Muted text color */
+  }
+  
+  .widget-todolist-icon {
+    margin-left: 10px;
+  }
+  
+  .widget-todolist-icon a {
+    color: #adb5bd; /* Light gray icon color */
+  }
+  
+  .widget-todolist-icon a:hover {
+    color: #495057; /* Darker color on hover */
+  }
+  
+  .form-check {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+  }
+  
+  .form-control {
+    margin-left: 10px;
+  }
+  

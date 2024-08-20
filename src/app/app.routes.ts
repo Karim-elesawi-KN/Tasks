@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { PageService } from './pages.service';
+import { PageService } from './services/pages.service';
 import { PageComponent } from './page/page.component';
 
 export function getLandingPage(pageService: PageService): string {

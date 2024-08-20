@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './site/sidebar/sidebar.component';
-import { PageService } from './pages.service';
+import { PageService } from './services/pages.service';
 import { SiteComponent } from "./site/site.component";
 
 @Component({
@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
       await this.pageService.loadPages();
       const landingPage = this.pageService.getLandingPage();
       if (landingPage) {
-        // Redirect to the landing page if not already there
         if (this.router.url === '/') {
           this.router.navigate([landingPage]);
         }

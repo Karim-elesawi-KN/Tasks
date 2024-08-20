@@ -1,0 +1,13 @@
+.gridster {
+  margin-left: 10%; /* Adjust this value based on your sidebar width */
+  padding: 10px;
+  box-sizing: border-box;
+  width: calc(100% - 10%); /* Adjust based on sidebar width */
+  height: 100%; /* Full height */
+}
+
+gridster-item {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 10px;
+}

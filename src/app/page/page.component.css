@@ -4,7 +4,7 @@ div {
   flex-direction: column;
   align-items: center; /* Move content to the right */
   height: 90%; /* Ensure it takes the full viewport height */
-  width: 90%;
+  width: 86.6%;
   /* padding: 20px; Optional: Add some padding */
   position: absolute;
   bottom: 0px ;
@@ -14,4 +14,15 @@ div {
 /* Additional styles to move title to the right */
 h1 {
   text-align: right;
+}
+
+.page-title {
+  width: 100%;
+  text-align: center;
+}
+
+.page-content {
+  width: 100%;
+  text-align: center;
+  height: 100%;
 }

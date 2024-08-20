@@ -2,7 +2,7 @@ import { ApplicationConfig, APP_INITIALIZER } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
-import { PageService } from './pages.service';
+import { PageService } from './services/pages.service';
 
 export function loadPagesFactory(pageService: PageService) {
   return () => pageService.loadPages().catch(err => {
