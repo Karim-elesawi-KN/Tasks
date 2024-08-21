@@ -1,14 +1,24 @@
-import { Component } from '@angular/core';
-import { WidgetUserListComponent } from './widget-user-list/widget-user-list.component';
-import { WidgetToDoListComponent } from './widget-to-do-list/widget-to-do-list.component';
+import { Component, Input, ViewContainerRef, OnInit } from '@angular/core';
+import { WidgetService } from '../services/widget.service';
 
 @Component({
   selector: 'app-widget',
+  template: '',
   standalone: true,
-  imports: [WidgetUserListComponent, WidgetToDoListComponent],
-  templateUrl: './widget.component.html',
-  styleUrl: './widget.component.css'
 })
-export class WidgetComponent {
+export class WidgetComponent implements OnInit {
+  @Input() widgetContext!: string;
 
+  constructor(
+    private viewContainerRef: ViewContainerRef,
+    private WidgetService: WidgetService
+  ) {}
+
+  ngOnInit() {
+    const component = this.WidgetService.getComponent(this.widgetContext);
+    if (component) {
+      this.viewContainerRef.clear();
+      this.viewContainerRef.createComponent(component);
+    }
+  }
 }

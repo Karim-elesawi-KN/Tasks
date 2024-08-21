@@ -1,6 +1,5 @@
 <gridster [options]="options">
-  <gridster-item *ngFor="let item of dashboard" [item]="item">
-    <p>
-      {{ item['widgetContext'] }}
-    </p> </gridster-item>
+  <gridster-item *ngFor="let item of widgets" [item]="item">
+    <app-widget [widgetContext]="item.widgetContext"></app-widget>
+  </gridster-item>
 </gridster>

@@ -27,6 +27,15 @@ export class PageComponent implements OnInit {
         this.page = this.pageService.getPageById(context);
         if (this.page) {
           this.page.widgets = this.page.widgets || [];
+          this.page.widgets.map((widget: { x: any; y: any; cols: any; rows: any; widgetContext: any; }, index: any) => {
+            return {
+              x: widget.x,
+              y: widget.y,
+              cols: widget.cols,
+              rows: widget.rows,
+              widgetContext: widget.widgetContext
+            };
+          });
           console.log("Page loaded:", this.page);
         } else {
           console.error("Page not found for context:", context);

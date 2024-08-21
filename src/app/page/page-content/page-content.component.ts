@@ -12,5 +12,5 @@ import { CommonModule } from '@angular/common';
 })
 export class PageContentComponent {
   // @Input() content!: string;
-  @Input() page: any;
+  @Input() widgets!: any;
 }

@@ -1,22 +1,22 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   GridsterConfig,
   GridsterItem,
   GridsterModule,
 } from 'angular-gridster2';
 import { CommonModule } from '@angular/common';
-import { WidgetUserListComponent } from '../widget/widget-user-list/widget-user-list.component';
-import { WidgetToDoListComponent } from '../widget/widget-to-do-list/widget-to-do-list.component';
+import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
   selector: 'app-gridster',
   standalone: true,
-  imports: [
-    CommonModule,
-    GridsterModule,
-    WidgetUserListComponent,
-    WidgetToDoListComponent,
-  ],
+  imports: [CommonModule, GridsterModule, WidgetComponent],
   templateUrl: './gridster.component.html',
   styleUrls: ['./gridster.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,6 +29,7 @@ export class GridsterComponent implements OnInit {
   dashboard: GridsterItem[] = [];
 
   ngOnInit() {
+    console.log(this.widgets);
     this.options = {
       draggable: {
         enabled: true,
@@ -47,14 +48,14 @@ export class GridsterComponent implements OnInit {
       maxRows: 12,
     };
 
-    this.dashboard = this.widgets.map((widget, index) => {
-      return {
-        x: widget.x,
-        y: widget.y,
-        cols: widget.cols,
-        rows: widget.rows,
-        widgetContext: widget.widgetContext,
-      };
-    });
+    // this.dashboard = this.widgets.map((widget, index) => {
+    //   return {
+    //     x: widget.x,
+    //     y: widget.y,
+    //     cols: widget.cols,
+    //     rows: widget.rows,
+    //     widgetContext: widget.widgetContext,
+    //   };
+    // });
   }
 }
