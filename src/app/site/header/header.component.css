@@ -30,3 +30,7 @@
   background-color: white; /* White background on hover */
   color: #333; /* Dark gray text on hover */
 }
+
+.btn:active{
+  background-color: aliceblue;
+}

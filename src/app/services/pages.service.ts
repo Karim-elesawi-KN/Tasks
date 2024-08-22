@@ -9,7 +9,7 @@ export class PageService {
   private pagesLoaded = false; 
 
   async loadPages(): Promise<void> {
-    if (this.pagesLoaded) return; // Prevent reloading if already loaded
+    if (this.pagesLoaded) return; 
 
     const response = await fetch('/assets/pages.json');
     const data = await response.json();
@@ -29,4 +29,5 @@ export class PageService {
   getLandingPage() {
     return this.landingPage;
   }
+
 }

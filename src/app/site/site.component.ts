@@ -10,5 +10,5 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
   styleUrl: './site.component.css'
 })
 export class SiteComponent {
-
+  
 }

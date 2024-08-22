@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
-import { SidebarComponent } from './site/sidebar/sidebar.component';
 import { PageService } from './services/pages.service';
 import { SiteComponent } from "./site/site.component";
 
@@ -13,7 +12,6 @@ import { SiteComponent } from "./site/site.component";
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'tsk1';
 
   constructor(
     private pageService: PageService,

@@ -1,6 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
+  inject,
   Input,
   OnInit,
   ViewEncapsulation,
@@ -12,6 +14,8 @@ import {
 } from 'angular-gridster2';
 import { CommonModule } from '@angular/common';
 import { WidgetComponent } from '../widget/widget.component';
+import { EditModeService } from '../services/edit-mode.service';
+import { WidgetService } from '../services/widget.service';
 
 @Component({
   selector: 'app-gridster',
@@ -24,21 +28,25 @@ import { WidgetComponent } from '../widget/widget.component';
 })
 export class GridsterComponent implements OnInit {
   @Input() widgets: any[] = [];
-  page: any;
   options: GridsterConfig = {};
   dashboard: GridsterItem[] = [];
+  private destroyRef = inject(DestroyRef);
+
+  constructor(
+    private editModeService: EditModeService,
+    private widgetService: WidgetService
+  ) {}
 
   ngOnInit() {
-    console.log(this.widgets);
     this.options = {
       draggable: {
-        enabled: true,
+        enabled: false,
       },
       resizable: {
-        enabled: true,
+        enabled: false,
       },
       gridType: 'fit',
-      displayGrid: 'always',
+      displayGrid: 'onDrag&Resize',
       margin: 10,
       outerMargin: true,
       pushItems: true,
@@ -48,14 +56,15 @@ export class GridsterComponent implements OnInit {
       maxRows: 12,
     };
 
-    // this.dashboard = this.widgets.map((widget, index) => {
-    //   return {
-    //     x: widget.x,
-    //     y: widget.y,
-    //     cols: widget.cols,
-    //     rows: widget.rows,
-    //     widgetContext: widget.widgetContext,
-    //   };
-    // });
+    const subscription = this.editModeService.editMode$.subscribe(
+      (isEditMode) => {
+        this.options.draggable!.enabled = isEditMode;
+        this.options.resizable!.enabled = isEditMode;
+        if (this.options.api && this.options.api.optionsChanged) {
+          this.options.api.optionsChanged();
+        }
+      });
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
+
 }
