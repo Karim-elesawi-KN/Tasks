@@ -1,5 +1,11 @@
 <header class="header">
   <div>
-    <button class="btn" (click)="toggleEditMode()">Edit site</button>
+    <i
+      class="fa-regular fa-pen-to-square"
+      [ngClass]="{ 'btn-white': isEditMode }"
+      (click)="toggleEditMode()"
+    >
+      {{ isEditMode ? "Close Edit Mode" : "Edit site" }}
+    </i>
   </div>
 </header>

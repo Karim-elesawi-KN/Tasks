@@ -16,6 +16,8 @@ import { CommonModule } from '@angular/common';
 import { WidgetComponent } from '../widget/widget.component';
 import { EditModeService } from '../services/edit-mode.service';
 import { WidgetService } from '../services/widget.service';
+import saveAs from 'file-saver';
+import { PageService } from '../services/pages.service';
 
 @Component({
   selector: 'app-gridster',
@@ -34,7 +36,7 @@ export class GridsterComponent implements OnInit {
 
   constructor(
     private editModeService: EditModeService,
-    private widgetService: WidgetService
+    private pageService: PageService
   ) {}
 
   ngOnInit() {
@@ -67,4 +69,12 @@ export class GridsterComponent implements OnInit {
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
 
+  saveChanges() {
+    const pagesData = this.pageService.getPages(); 
+    const blob = new Blob([JSON.stringify({['pages']:pagesData}, null, 2)], {
+      type: 'application/json',
+    });
+
+    saveAs(blob, 'pages.json'); 
+  }
 }
