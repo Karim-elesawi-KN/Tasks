@@ -1,7 +1,10 @@
 <nav class="sidebar">
+  <p>
+    Navigation
+  </p>
   <ul>
     <li *ngFor="let page of pages">
-      <a  [routerLink]="['/', page.pageContext]">{{ page.pageName }}</a>
+      <a [routerLink]="['/', page.pageContext]">{{ page.pageName }}</a>
     </li>
   </ul>
 </nav>

@@ -1,7 +1,7 @@
 /* Sidebar styles */
 .sidebar {
   background-color: #2d353c; 
-  height: 90%; 
+  height: 93%; 
   width: 15%; 
   position: fixed; 
   bottom: 0;
@@ -15,19 +15,23 @@
   padding: 0;
 }
 
-/* .sidebar ul li {
-  margin-bottom: 10px;
-} */
-
 .sidebar ul li a {
   color: rgb(173, 173, 173);
   text-decoration: none;
   display: block;
   padding: 10px;
+  padding-left: 20px;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .sidebar ul li a:hover {
   color: white;
-  background-color: rgba(255, 255, 255, 0.205); /* Optional: adds a slight background change on hover */
+}
+
+.sidebar p{
+  color: rgb(173, 173, 173);
+  text-decoration: none;
+  display: block;
+  font-size: 13px;
+  padding-left: 10px;
 }

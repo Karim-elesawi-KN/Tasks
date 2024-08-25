@@ -1,11 +1,12 @@
 /* Header Styling (if you have header content) */
 .header {
   width: 100%;
-  height: 10%;
+  height: 7%;
   background-color: #ffffff;
   position: absolute;
   right: 0px;
   z-index: 1;
+  border: 2px solid black;
 }
 
 .fa-regular {
@@ -15,8 +16,19 @@
   border-radius: 5px;
   cursor: pointer;
   position: absolute;
-  right: 1%;
-  top: 25%;
+  font-size: 24px;
+  right: 0;
+}
+
+.fa-solid {
+  color: rgb(0, 0, 0);
+  border: 10%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  font-size: 24px;
+  right: 0;
 }
 
 .div {

@@ -1,9 +1,9 @@
 .gridster {
-  margin-left: 10%; /* Adjust this value based on your sidebar width */
+  margin-left: 15%; /* Adjust this value based on your sidebar width */
   padding: 10px;
   box-sizing: border-box;
-  width: calc(100% - 10%); /* Adjust based on sidebar width */
-  height: 100%; /* Full height */
+  width: 85%; 
+  height: 100%; 
 }
 
 gridster-item {
