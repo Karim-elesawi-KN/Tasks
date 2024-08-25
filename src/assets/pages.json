@@ -8,15 +8,15 @@
       "widgets": [
         {
           "widgetContext": "widget-user-list",
-          "cols": 2,
-          "rows": 6,
+          "cols": 3,
+          "rows": 3,
           "x": 0,
           "y": 0
         },
         {
           "widgetContext": "widget-to-do-list",
           "cols": 2,
-          "rows": 2,
+          "rows": 1,
           "x": 2,
           "y": 0
         }

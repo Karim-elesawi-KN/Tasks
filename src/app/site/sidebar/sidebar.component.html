@@ -4,7 +4,12 @@
   </p>
   <ul>
     <li *ngFor="let page of pages">
-      <a [routerLink]="['/', page.pageContext]">{{ page.pageName }}</a>
+      <a [routerLink]="['/', page.pageContext]">
+        <i *ngIf="page.pageContext === 'home'" class="fa-solid fa-house"></i>
+        <i *ngIf="page.pageContext === 'about'" class="fa-solid fa-address-card"></i>
+        <i *ngIf="page.pageContext === 'contact'" class="fa-solid fa-phone"></i>
+        {{ page.pageName }}
+      </a>
     </li>
   </ul>
 </nav>

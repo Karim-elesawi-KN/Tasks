@@ -1,34 +1,107 @@
-/* Widget Container */
 .widget-todolist {
-  height: 100%; 
-  display: flex;
-  flex-direction: row;
-  overflow: hidden; 
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
 }
 
-/* Widget Body */
+.widget-todolist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.widget-todolist-header-title {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+.widget-todolist-header-total {
+  text-align: right;
+}
+
+.widget-todolist-header-total .text-body {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.widget-todolist-header-total small {
+  display: block;
+  color: #999;
+}
+
 .widget-todolist-body {
-  flex-grow: 1; 
+  max-height: 300px; /* Adjust height as needed */
   overflow-y: auto;
 }
 
-/* Widget Items */
 .widget-todolist-item {
-  padding: 5px;
-  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e9ecef;
 }
 
-/* Widget Header */
-.widget-todolist-header {
-  flex-shrink: 0;
+.widget-todolist-item:last-child {
+  border-bottom: none;
 }
 
-/* Adjust Font Sizes */
-.widget-todolist-header-title {
+.widget-todolist-input {
+  margin-right: 15px;
+}
+
+.widget-todolist-input .form-check-input {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+.widget-todolist-content {
+  flex-grow: 1;
+}
+
+.widget-todolist-content h6 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.widget-todolist-content .text-body {
   font-size: 14px;
+  color: #999;
 }
 
-.widget-todolist-content input.form-control {
-  font-size: 12px;
-  padding: 6px;
+.widget-todolist-icon {
+  margin-left: auto;
+}
+
+.widget-todolist-icon a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.widget-todolist-icon a:hover {
+  color: #0056b3;
+}
+
+.widget-todolist-item input.form-control {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.widget-todolist-item input.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.widget-todolist-item .fa-plus {
+  font-size: 20px;
+  cursor: pointer;
 }

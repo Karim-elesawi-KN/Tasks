@@ -1,5 +1,12 @@
-<gridster [options]="options">
-  <gridster-item *ngFor="let item of widgets" [item]="item">
-    <app-widget [widgetContext]="item.widgetContext"></app-widget>
+<gridster class="gridster" [options]="options">
+  <gridster-item
+    class="gridster-item"
+    *ngFor="let item of widgets"
+    [item]="item"
+  >
+    <app-widget
+      class="app-widget"
+      [widgetContext]="item.widgetContext"
+    ></app-widget>
   </gridster-item>
 </gridster>
