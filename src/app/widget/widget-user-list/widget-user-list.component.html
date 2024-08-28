@@ -1,63 +1,9 @@
-<!-- begin widget-list -->
+<!-- parent-component.html -->
 <div class="widget-list rounded mb-4">
-  <!-- begin widget-list-item -->
-  <div class="widget-list-item">
-    <div class="widget-list-media">
-      <img src="../assets/img/user-1.jpg" width="50" class="rounded" />
-    </div>
-    <div class="widget-list-content">
-      <h4 class="widget-list-title">Christopher Struth</h4>
-      <p class="widget-list-desc">Bank Transfer</p>
-    </div>
-    <div class="widget-list-action">
-      <a href="#" data-bs-toggle="dropdown" class="text-body text-opacity-50">
-        <i class="fa fa-ellipsis-h fs-14px"></i>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-end">
-        ...
-      </ul>
-    </div>
-  </div>
-  <!-- end widget-list-item -->
-
-  <!-- begin widget-list-item -->
-  <div class="widget-list-item">
-    <div class="widget-list-media">
-      <img src="../assets/img/user-1.jpg" width="50" class="rounded" />
-    </div>
-    <div class="widget-list-content">
-      <h4 class="widget-list-title">Jessica Pearson</h4>
-      <p class="widget-list-desc">Credit Card</p>
-    </div>
-    <div class="widget-list-action">
-      <a href="#" data-bs-toggle="dropdown" class="text-body text-opacity-50">
-        <i class="fa fa-ellipsis-h fs-14px"></i>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-end">
-        ...
-      </ul>
-    </div>
-  </div>
-  <!-- end widget-list-item -->
-
-  <!-- begin widget-list-item -->
-  <div class="widget-list-item">
-    <div class="widget-list-media">
-      <img src="../assets/img/user-1.jpg" width="50" class="rounded" />
-    </div>
-    <div class="widget-list-content">
-      <h4 class="widget-list-title">Harvey Specter</h4>
-      <p class="widget-list-desc">Wire Transfer</p>
-    </div>
-    <div class="widget-list-action">
-      <a href="#" data-bs-toggle="dropdown" class="text-body text-opacity-50">
-        <i class="fa fa-ellipsis-h fs-14px"></i>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-end">
-        ...
-      </ul>
-    </div>
-  </div>
-  <!-- end widget-list-item -->
+  <app-widget-user-list-model
+    *ngFor="let user of users"
+    [imgSrc]="user.imgSrc"
+    [title]="user.title"
+    [description]="user.description"
+  ></app-widget-user-list-model>
 </div>
-<!-- end widget-list -->

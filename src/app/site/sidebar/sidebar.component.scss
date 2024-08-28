@@ -1,15 +1,19 @@
+@import "variables";
+
 /* Sidebar styles */
 .sidebar {
-  background-color: #2d353c;
+  background-color:  map-get($colors, main );
   height: 93%;
   width: 15%;
   position: fixed;
   bottom: 0;
   left: 0;
-  overflow-x: hidden;
+  overflow-x: hidden; 
   overflow-y: auto; /* Enable vertical scroll */
   display: flex;
-  flex-direction: column;
+  flex: {
+    direction: column;
+  }
   align-items: flex-start;
 }
 
@@ -22,7 +26,7 @@
 
 .sidebar ul li a {
   width: 100%;
-  color: #adadad;
+  color:  map-get($colors, secondary );
   text-decoration: none;
   display: block;
   padding: 10px;
@@ -35,7 +39,7 @@
 }
 
 .sidebar p {
-  color: rgb(173, 173, 173);
+  color: map-get($colors, secondary );
   text-decoration: none;
   font-size: 13px;
   padding-bottom: 20px;
@@ -44,9 +48,6 @@
   text-align: center;
   align-self: center;
 }
-
 .sidebar .fa-solid {
   margin-right: 10px;
 }
-
-/*# sourceMappingURL=sidebar.component.css.map */

@@ -7,7 +7,7 @@ import { PageService } from '../../services/pages.service';
   standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css',
+  styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent implements OnInit {
   pages: any[] = [];
