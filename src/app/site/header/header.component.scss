@@ -1,0 +1,38 @@
+@import "../../../assets/variables";
+
+.header {
+  width: 100%;
+  height: 7%;
+  background-color: $header;
+  position: absolute;
+  right: 0px;
+  z-index: 1;
+
+  .fa-pen-to-square,
+  .fa-file-pen {
+    color: map-get($colors, main);
+    padding: 10px 20px;
+    cursor: pointer;
+    position: absolute;
+    font-size: 24px;
+    right: 0;
+    top: 0;
+
+    &:hover {
+      color: lighten(map-get($colors, main), $amount: 10%);
+    }
+  }
+
+  p {
+    position: absolute;
+    color: map-get($colors, main);
+    font-size: 24px;
+    padding: 0%;
+    margin: 1%;
+    font-weight: bolder;
+
+    .fa-cloud {
+      color: $third;
+    }
+  }
+}

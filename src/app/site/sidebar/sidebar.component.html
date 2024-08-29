@@ -1,13 +1,23 @@
 <nav class="sidebar">
-  <p>
-    Navigation
-  </p>
+  <p>Navigation</p>
   <ul>
     <li *ngFor="let page of pages">
-      <a [routerLink]="['/', page.pageContext]">
-        <i *ngIf="page.pageContext === 'home'" class="fa-solid fa-house"></i>
-        <i *ngIf="page.pageContext === 'about'" class="fa-solid fa-address-card"></i>
-        <i *ngIf="page.pageContext === 'contact'" class="fa-solid fa-phone"></i>
+      <a [routerLink]="['/', page.pageContext]" routerLinkActive="active">
+        <i
+          *ngIf="page.pageContext === 'home'"
+          class="fa-solid fa-house"
+          routerLinkActive="active"
+        ></i>
+        <i
+          *ngIf="page.pageContext === 'about'"
+          class="fa-solid fa-address-card"
+          routerLinkActive="active"
+        ></i>
+        <i
+          *ngIf="page.pageContext === 'contact'"
+          class="fa-solid fa-phone"
+          routerLinkActive="active"
+        ></i>
         {{ page.pageName }}
       </a>
     </li>

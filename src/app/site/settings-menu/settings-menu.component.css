@@ -1,0 +1,67 @@
+.sliding-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.5s ease;
+  z-index: 999;
+}
+.sliding-menu.open {
+  right: 0;
+}
+.sliding-menu .fixed-icon {
+  position: absolute;
+  top: 20%;
+  width: 30px;
+  left: -35px;
+  transform: translateY(-20%);
+  background-color: white;
+  padding: 7px;
+  border-radius: 7px 0 0 7px;
+  transition: left 0.5s ease;
+}
+.sliding-menu .fixed-icon i {
+  font-size: 24px;
+  color: #2d353c;
+  cursor: pointer;
+}
+.sliding-menu .fixed-icon i:hover {
+  color: #434f59;
+}
+.sliding-menu .menu-content {
+  padding: 20px;
+}
+.sliding-menu .menu-content .circle-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.sliding-menu .menu-content .circle-container .circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: -3px 0 5px rgba(2, 0, 0, 0.6235294118);
+}
+.sliding-menu .menu-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+.sliding-menu .menu-content ul li {
+  margin-bottom: 10px;
+}
+.sliding-menu .menu-content ul li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+.sliding-menu .menu-content ul li a:hover {
+  background-color: #ededed;
+}
+
+/*# sourceMappingURL=settings-menu.component.css.map */

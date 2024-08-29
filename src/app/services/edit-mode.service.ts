@@ -6,10 +6,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class EditModeService {
   private editModeSubject = new BehaviorSubject<boolean>(false);
+  private settingModeSubject = new BehaviorSubject<boolean>(false);
   editMode$ = this.editModeSubject.asObservable();
 
   toggleEditMode() {
     this.editModeSubject.next(!this.editModeSubject.value);
+  }
+
+  toggleSettingMode() {
+    this.settingModeSubject.next(!this.settingModeSubject.value);
   }
 
   get isEditMode() {

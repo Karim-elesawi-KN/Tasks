@@ -1,0 +1,20 @@
+<div class="sliding-menu" [ngClass]="{ open: isSettingMode }">
+  <div class="fixed-icon" (click)="toggleSetting()">
+    <i class="fa-solid fa-gear" *ngIf="!isSettingMode"></i>
+    <i class="fa-solid fa-xmark" *ngIf="isSettingMode"></i>
+  </div>
+  <div class="menu-content">
+    <div class="circle-container">
+      <div
+        class="circle"
+        *ngFor="let color of circleColors"
+        [ngStyle]="{ 'background-color': color }"
+      ></div>
+    </div>
+    <ul>
+      <li><a href="#">Option 1</a></li>
+      <li><a href="#">Option 2</a></li>
+      <li><a href="#">Option 3</a></li>
+    </ul>
+  </div>
+</div>

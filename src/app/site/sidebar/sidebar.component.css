@@ -12,14 +12,25 @@
   flex-direction: column;
   align-items: flex-start;
 }
-
+.sidebar .fa-solid {
+  margin-right: 10px;
+}
+.sidebar p {
+  color: #adadad;
+  text-decoration: none;
+  font-size: 13px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
+  width: 80%;
+  text-align: center;
+  align-self: center;
+}
 .sidebar ul {
   width: 100%;
   list-style-type: none;
   padding: 0;
   padding-top: -20px;
 }
-
 .sidebar ul li a {
   width: 100%;
   color: #adadad;
@@ -29,24 +40,15 @@
   font-size: 14px;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
-
-.sidebar ul li a:hover {
+.sidebar ul li a.active {
+  background-color: #20262b;
   color: white;
 }
-
-.sidebar p {
-  color: rgb(173, 173, 173);
-  text-decoration: none;
-  font-size: 13px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid white;
-  width: 80%;
-  text-align: center;
-  align-self: center;
+.sidebar ul li a.active .fa-solid {
+  color: #49b6d6;
 }
-
-.sidebar .fa-solid {
-  margin-right: 10px;
+.sidebar ul li a:hover {
+  color: white;
 }
 
 /*# sourceMappingURL=sidebar.component.css.map */

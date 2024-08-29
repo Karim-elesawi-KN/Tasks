@@ -1,14 +1,7 @@
 <header class="header">
-  <p>
-    Header
-  </p>
-  <div>
-    <i
-      [ngClass]="{ 'fa-regular fa-pen-to-square': !isEditMode,
-       'fa-solid fa-file-pen': isEditMode
-       }"
-      (click)="toggleEditMode()"
-    >
-    </i>
+  <p><i class="fa-solid fa-cloud"></i> Header</p>
+  <div (click)="toggleEditMode()">
+    <i class="fa-regular fa-pen-to-square" *ngIf="!isEditMode"></i>
+    <i class="fa-solid fa-pen-to-square" *ngIf="isEditMode"></i>
   </div>
 </header>

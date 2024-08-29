@@ -1,0 +1,22 @@
+@import "../../assets/variables";
+
+.fixed-icon {
+  background-color: $header;
+  padding: 7px;
+  border-radius: 7px 0 0 7px;
+  position: fixed;
+  top: 20%;
+  right: 0px;
+  transform: translateY(-20%);
+  transition: right 0.3s ease;
+  z-index: 1000;
+
+  i {
+    font-size: 24px;
+    color: map-get($colors, main);
+    cursor: pointer;
+    &:hover {
+      color: lighten(map-get($colors, main), $amount: 10%);
+    }
+  }
+}

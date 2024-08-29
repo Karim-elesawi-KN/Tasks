@@ -1,8 +1,8 @@
-@import "variables";
+@import "../../../assets/variables";
 
 /* Sidebar styles */
 .sidebar {
-  background-color:  map-get($colors, main );
+  background-color: map-get($colors, main );
   height: 93%;
   width: 15%;
   position: fixed;
@@ -15,39 +15,49 @@
     direction: column;
   }
   align-items: flex-start;
-}
 
-.sidebar ul {
-  width: 100%;
-  list-style-type: none;
-  padding: 0;
-  padding-top: -20px;
-}
+  .fa-solid {
+    margin-right: 10px;
+  }
 
-.sidebar ul li a {
-  width: 100%;
-  color:  map-get($colors, secondary );
-  text-decoration: none;
-  display: block;
-  padding: 10px;
-  font-size: 14px;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
+  p {
+    color: map-get($colors, secondary );
+    text-decoration: none;
+    font-size: 13px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+    width: 80%;
+    text-align: center;
+    align-self: center;
+  }
 
-.sidebar ul li a:hover {
-  color: white;
-}
+  ul {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    padding-top: -20px;
 
-.sidebar p {
-  color: map-get($colors, secondary );
-  text-decoration: none;
-  font-size: 13px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid white;
-  width: 80%;
-  text-align: center;
-  align-self: center;
-}
-.sidebar .fa-solid {
-  margin-right: 10px;
+    li a {
+      width: 100%;
+      color:  map-get($colors, secondary );
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      font-size: 14px;
+      transition: color 0.3s ease, background-color 0.3s ease;
+
+      &.active {
+        background-color: darken($color: map-get($colors, main ), $amount: 6%); //20252a
+        color: white;
+
+        .fa-solid {
+          color: $third;
+        }
+      }
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
 }
