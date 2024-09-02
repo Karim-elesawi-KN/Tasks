@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { EditModeService } from '../../services/edit-mode.service';
-import { SiteComponent } from '../site.component';
 import { CommonModule } from '@angular/common';
+import { PageService } from '../../services/page.service';
 
 @Component({
   selector: 'app-header',
@@ -11,17 +10,12 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class HeaderComponent {
-  @Input() siteComponent!: SiteComponent;
   isEditMode = false;
 
-  constructor(private editModeService: EditModeService) {}
+  constructor(private pageService: PageService) {}
 
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
-    this.editModeService.toggleEditMode();
-
-    if (!this.isEditMode) {
-      this.siteComponent.saveChanges();
-    }
+    this.pageService.toggleEditMode();
   }
 }

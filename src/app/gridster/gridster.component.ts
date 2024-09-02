@@ -10,14 +10,11 @@ import {
 import {
   GridsterConfig,
   GridsterItem,
-  GridsterModule,
-} from 'angular-gridster2';
+  GridsterModule,} from 'angular-gridster2';
 import { CommonModule } from '@angular/common';
 import { WidgetComponent } from '../widget/widget.component';
-import { EditModeService } from '../services/edit-mode.service';
-import { WidgetService } from '../services/widget.service';
 import saveAs from 'file-saver';
-import { PageService } from '../services/pages.service';
+import { PageService } from '../services/page.service';
 
 @Component({
   selector: 'app-gridster',
@@ -25,8 +22,6 @@ import { PageService } from '../services/pages.service';
   imports: [CommonModule, GridsterModule, WidgetComponent],
   templateUrl: './gridster.component.html',
   styleUrls: ['./gridster.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class GridsterComponent implements OnInit {
   @Input() widgets: any[] = [];
@@ -35,7 +30,6 @@ export class GridsterComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
 
   constructor(
-    private editModeService: EditModeService,
     private pageService: PageService
   ) {}
 
@@ -58,7 +52,7 @@ export class GridsterComponent implements OnInit {
       maxRows: 12,
     };
 
-    const subscription = this.editModeService.editMode$.subscribe(
+    const subscription = this.pageService.editMode$.subscribe(
       (isEditMode) => {
         this.options.draggable!.enabled = isEditMode;
         this.options.resizable!.enabled = isEditMode;
@@ -67,14 +61,5 @@ export class GridsterComponent implements OnInit {
         }
       });
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
-  }
-
-  saveChanges() {
-    const pagesData = this.pageService.getPages(); 
-    const blob = new Blob([JSON.stringify({['pages']:pagesData}, null, 2)], {
-      type: 'application/json',
-    });
-
-    saveAs(blob, 'pages.json'); 
   }
 }

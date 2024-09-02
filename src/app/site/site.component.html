@@ -1,9 +1,10 @@
-<app-header [siteComponent]="this"></app-header>
+<app-header></app-header>
+
 <app-sidebar></app-sidebar>
-<app-gridster></app-gridster>
 
 <app-settings-menu
   [isSettingMode]="isSettingMode"
   (menuToggle)="onMenuToggle($event)"
->
-</app-settings-menu>
+></app-settings-menu>
+
+<app-page></app-page>

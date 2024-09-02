@@ -1,0 +1,41 @@
+.mat-elevation-z8 {
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.mat-elevation-z8 .table-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.mat-elevation-z8 .table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--widget-mat-table-bg);
+}
+.mat-elevation-z8 .table-container .header-row {
+  background-color: var(--widget-mat-table-header-bg);
+  color: var(--widget-mat-table-header-text);
+  font-weight: 601;
+  text-align: left;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.mat-elevation-z8 .table-container td.mat-cell {
+  background-color: var(--widget-mat-table-body-bg);
+  color: var(--widget-mat-table-body-text);
+  padding: 12px;
+  border-bottom: var(--widget-mat-table-border-bottom);
+}
+.mat-elevation-z8 .table-container .paginator {
+  background-color: var(--widget-mat-table-header-bg);
+  color: var(--widget-mat-table-header-text);
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
+
+/*# sourceMappingURL=widget-users-mat-table.component.css.map */

@@ -9,10 +9,19 @@
         class="circle"
         *ngFor="let color of circleColors"
         [ngStyle]="{ 'background-color': color }"
+        (click)="changeThirdColor(color)"
       ></div>
     </div>
     <ul>
-      <li><a href="#">Option 1</a></li>
+      <li>
+        <div class="dark-mode-option">
+          <span>Dark Mode</span>
+          <label class="switch">
+            <input type="checkbox" (change)="toggleDarkMode($event)"/>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </li>
       <li><a href="#">Option 2</a></li>
       <li><a href="#">Option 3</a></li>
     </ul>

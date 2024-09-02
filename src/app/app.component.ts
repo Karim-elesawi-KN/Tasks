@@ -1,22 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { RouterOutlet } from '@angular/router';
-import { PageService } from './services/pages.service';
-import { SiteComponent } from "./site/site.component";
+import { Component } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { PageService } from './services/page.service';
+import { SiteComponent } from './site/site.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, SiteComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
-
-  constructor(
-    private pageService: PageService,
-    private router: Router
-  ) {}
+export class AppComponent {
+  constructor(private pageService: PageService, private router: Router) {}
 
   async ngOnInit() {
     try {

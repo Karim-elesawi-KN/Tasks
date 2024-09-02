@@ -1,0 +1,113 @@
+.widget-todolist {
+  background-color: var(--widgets-light-mode-bg);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  overflow-y: auto;
+
+  .widget-todolist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .widget-todolist-header-title {
+      font-size: 18px;
+      color: var(--widgets-light-mode-text);
+      margin: 0;
+    }
+
+    .widget-todolist-header-total {
+      text-align: right;
+
+      .text-body {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--widgets-light-mode-text);
+      }
+
+      small {
+        display: block;
+        color: var(--widgets-light-mode-subtext);
+      }
+    }
+  }
+
+  .widget-todolist-body {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .widget-todolist-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: var(--widgets-light-mode-border-bottom);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .widget-todolist-input {
+      margin-right: 15px;
+
+      .form-check-input {
+        width: 18px;
+        height: 18px;
+        margin-top: 3px;
+      }
+    }
+
+    .widget-todolist-content {
+      flex-grow: 1;
+
+      h6 {
+        margin: 0;
+        font-size: 16px;
+        color: var(--widgets-light-mode-text);
+      }
+
+      .text-body {
+        font-size: 14px;
+        color: var(--widgets-light-mode-subtext);
+      }
+    }
+
+    .widget-todolist-icon {
+      margin-left: auto;
+
+      a {
+        color: var(--third-color);
+        text-decoration: none;
+
+        &:hover {
+          color: var(--third-color);
+        }
+      }
+    }
+
+    input.form-control {
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      border-bottom: var(--widgets-light-mode-border-bottom);
+
+      &:focus {
+        outline: none;
+        border-color: var(--third-color);
+      }
+    }
+
+    .fa-plus {
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--widgets-light-mode-icons);
+
+      &hover {
+        color: var(--widgets-light-mode-icons-hover);
+      }
+    }
+  }
+}

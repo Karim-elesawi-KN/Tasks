@@ -1,10 +1,10 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PageService } from '../services/pages.service';
+import { PageService } from '../../services/page.service';
 import { CommonModule } from '@angular/common';
 import { PageTitleComponent } from "./page-title/page-title.component";
 import { PageContentComponent } from "./page-content/page-content.component";
-import { GridsterComponent } from '../gridster/gridster.component';
+import { GridsterComponent } from '../../gridster/gridster.component';
 
 @Component({
   selector: 'app-page',

@@ -1,107 +1,95 @@
 .widget-todolist {
-  background-color: #fff;
+  background-color: var(--widgets-light-mode-bg);
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 100%;
+  overflow-y: auto;
 }
-
-.widget-todolist-header {
+.widget-todolist .widget-todolist-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
 }
-
-.widget-todolist-header-title {
+.widget-todolist .widget-todolist-header .widget-todolist-header-title {
   font-size: 18px;
-  color: #333;
+  color: var(--widgets-light-mode-text);
   margin: 0;
 }
-
-.widget-todolist-header-total {
+.widget-todolist .widget-todolist-header .widget-todolist-header-total {
   text-align: right;
 }
-
-.widget-todolist-header-total .text-body {
+.widget-todolist .widget-todolist-header .widget-todolist-header-total .text-body {
   font-size: 24px;
   font-weight: bold;
-  color: #333;
+  color: var(--widgets-light-mode-text);
 }
-
-.widget-todolist-header-total small {
+.widget-todolist .widget-todolist-header .widget-todolist-header-total small {
   display: block;
-  color: #999;
+  color: var(--widgets-light-mode-subtext);
 }
-
-.widget-todolist-body {
-  max-height: 300px; /* Adjust height as needed */
+.widget-todolist .widget-todolist-body {
+  max-height: 300px;
   overflow-y: auto;
 }
-
-.widget-todolist-item {
+.widget-todolist .widget-todolist-item {
   display: flex;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: var(--widgets-light-mode-border-bottom);
 }
-
-.widget-todolist-item:last-child {
+.widget-todolist .widget-todolist-item:last-child {
   border-bottom: none;
 }
-
-.widget-todolist-input {
+.widget-todolist .widget-todolist-item .widget-todolist-input {
   margin-right: 15px;
 }
-
-.widget-todolist-input .form-check-input {
+.widget-todolist .widget-todolist-item .widget-todolist-input .form-check-input {
   width: 18px;
   height: 18px;
   margin-top: 3px;
 }
-
-.widget-todolist-content {
+.widget-todolist .widget-todolist-item .widget-todolist-content {
   flex-grow: 1;
 }
-
-.widget-todolist-content h6 {
+.widget-todolist .widget-todolist-item .widget-todolist-content h6 {
   margin: 0;
   font-size: 16px;
-  color: #333;
+  color: var(--widgets-light-mode-text);
 }
-
-.widget-todolist-content .text-body {
+.widget-todolist .widget-todolist-item .widget-todolist-content .text-body {
   font-size: 14px;
-  color: #999;
+  color: var(--widgets-light-mode-subtext);
 }
-
-.widget-todolist-icon {
+.widget-todolist .widget-todolist-item .widget-todolist-icon {
   margin-left: auto;
 }
-
-.widget-todolist-icon a {
-  color: #007bff;
+.widget-todolist .widget-todolist-item .widget-todolist-icon a {
+  color: var(--third-color);
   text-decoration: none;
 }
-
-.widget-todolist-icon a:hover {
-  color: #0056b3;
+.widget-todolist .widget-todolist-item .widget-todolist-icon a:hover {
+  color: var(--third-color);
 }
-
-.widget-todolist-item input.form-control {
+.widget-todolist .widget-todolist-item input.form-control {
   border: none;
   border-radius: 0;
   padding: 0;
   box-shadow: none;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: var(--widgets-light-mode-border-bottom);
 }
-
-.widget-todolist-item input.form-control:focus {
+.widget-todolist .widget-todolist-item input.form-control:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: var(--third-color);
 }
-
-.widget-todolist-item .fa-plus {
+.widget-todolist .widget-todolist-item .fa-plus {
   font-size: 20px;
   cursor: pointer;
+  color: var(--widgets-light-mode-icons);
 }
+.widget-todolist .widget-todolist-item .fa-plushover {
+  color: var(--widgets-light-mode-icons-hover);
+}
+
+/*# sourceMappingURL=widget-to-do-list.component.css.map */

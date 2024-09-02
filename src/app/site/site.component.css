@@ -1,5 +1,23 @@
+:root {
+  --third-color: #49b6d6;
+  --header-light-mode-bg: white;
+  --header-light-mode-text: #00000069;
+  --header-light-mode-icons: #2d353c;
+  --header-light-mode-icons-hover: lighten(--header-light-mode-icons, 10%);
+  --header-dark-mode-bg: #2d353c;
+  --header-dark-mode-text: white;
+  --header-dark-mode-icons: #adadad;
+  --page-dark-mode-text: #dee2e6;
+}
+
+body.dark-mode {
+  --header-light-mode-bg: var(--header-dark-mode-bg);
+  --header-light-mode-text: var(--header-dark-mode-text);
+  --header-light-mode-icons: var(--header-dark-mode-icons);
+}
+
 .fixed-icon {
-  background-color: white;
+  background-color: var(--header-light-mode-bg);
   padding: 7px;
   border-radius: 7px 0 0 7px;
   position: fixed;

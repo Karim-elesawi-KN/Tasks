@@ -1,8 +1,74 @@
-/* @import '~gridster2/dist/gridster2.css'; */
-
-/* General Styles */
 body {
-    margin: 0 !important;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }  
+  margin: 0 !important;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+:root {
+  --third-color: #49b6d6;
+  --header-light-mode-bg: white;
+  --header-light-mode-text: #161a1d;
+  --header-light-mode-subtext: #adadad;
+  --header-light-mode-icons: #2d353c;
+  --header-light-mode-icons-hover: #adadad;
+  --header-dark-mode-bg: #262d33;
+  --header-dark-mode-text: white;
+  --header-dark-mode-subtext: #adadad;
+  --header-dark-mode-icons: #adadad;
+  --header-dark-mode-icons-hover: white;
+  --page-light-mode-bg: #dee2e6;
+  --page-light-mode-text: #161a1d;
+  --page-light-mode-subtext: #adadad;
+  --page-dark-mode-bg: #161a1d;
+  --page-dark-mode-text: #dee2e6;
+  --page-dark-mode-subtext: #adadad;
+  --widgets-light-mode-bg: white;
+  --widgets-light-mode-text: #161a1d;
+  --widgets-light-mode-subtext: #adadad;
+  --widgets-light-mode-border-bottom: 1px solid #e9ecef;
+  --widgets-light-mode-icons: #2d353c;
+  --widgets-light-mode-icons-hover: #adadad;
+  --widgets-dark-mode-bg: #2d353c;
+  --widgets-dark-mode-text: white;
+  --widgets-dark-mode-subtext: #adadad;
+  --widgets-dark-mode-border-bottom: 1px solid #161a1d;
+  --widgets-dark-mode-icons: #adadad;
+  --widgets-dark-mode-icons-hover: white;
+  --widget-mat-table-bg: white;
+  --widget-mat-table-header-bg: #2d353c;
+  --widget-mat-table-header-text: white;
+  --widget-mat-table-body-bg: white;
+  --widget-mat-table-body-text: #2d353c;
+  --widget-mat-table-border: 1px solid #e9ecef;
+  --widget-mat-table-border-bottom: 1px solid #2d353c;
+  --widget-mat-table-dark-mode-bg: #adadad;
+  --widget-mat-table-dark-mode-header-bg: #262d33;
+  --widget-mat-table-dark-mode-header-text: #adadad;
+  --widget-mat-table-dark-mode-body-bg: #adadad;
+  --widget-mat-table-dark-mode-body-text: #161a1d;
+  --widget-mat-table-dark-mode-border: 1px solid #161a1d;
+}
+
+body.dark-mode {
+  --header-light-mode-bg: var(--header-dark-mode-bg);
+  --header-light-mode-text: var(--header-dark-mode-text);
+  --header-light-mode-icons: var(--third-color);
+  --header-light-mode-icons-hover: var(--header-dark-mode-icons-hover);
+  --page-light-mode-bg: var(--page-dark-mode-bg);
+  --page-light-mode-text: var(--page-dark-mode-text);
+  --page-light-mode-subtext: var(--page-dark-mode-subtext);
+  --widgets-light-mode-bg: var(--widgets-dark-mode-bg);
+  --widgets-light-mode-text: var(--widgets-dark-mode-text);
+  --widgets-light-mode-subtext: var(--widgets-dark-mode-subtext);
+  --widgets-light-mode-border-bottom: var(--widgets-dark-mode-border-bottom);
+  --widgets-light-mode-icons: var(--widgets-dark-mode-icons);
+  --widgets-light-mode-icons-hover: var(--widgets-dark-mode-icons-hover);
+  --widget-mat-table-bg: var(--widget-mat-table-dark-mode-bg);
+  --widget-mat-table-header-bg: var(--widget-mat-table-dark-mode-header-bg);
+  --widget-mat-table-header-text: var(--widget-mat-table-dark-mode-header-text);
+  --widget-mat-table-body-bg: var(--widget-mat-table-dark-mode-body-bg);
+  --widget-mat-table-body-text: var(--widget-mat-table-dark-mode-body-text);
+  --widget-mat-table-border: var(--widget-mat-table-dark-mode-border);
+}
+
+/*# sourceMappingURL=styles.css.map */

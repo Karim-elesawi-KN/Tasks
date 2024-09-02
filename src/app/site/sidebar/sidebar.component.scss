@@ -1,15 +1,17 @@
-@import "../../../assets/variables";
+$colors: (
+  main: #2d353c,
+  secondary: #adadad,
+);
 
-/* Sidebar styles */
 .sidebar {
-  background-color: map-get($colors, main );
+  background-color: map-get($colors, main);
   height: 93%;
   width: 15%;
   position: fixed;
   bottom: 0;
   left: 0;
-  overflow-x: hidden; 
-  overflow-y: auto; /* Enable vertical scroll */
+  overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
   flex: {
     direction: column;
@@ -21,7 +23,7 @@
   }
 
   p {
-    color: map-get($colors, secondary );
+    color: map-get($colors, secondary);
     text-decoration: none;
     font-size: 13px;
     padding-bottom: 20px;
@@ -39,7 +41,7 @@
 
     li a {
       width: 100%;
-      color:  map-get($colors, secondary );
+      color: map-get($colors, secondary);
       text-decoration: none;
       display: block;
       padding: 10px;
@@ -47,11 +49,14 @@
       transition: color 0.3s ease, background-color 0.3s ease;
 
       &.active {
-        background-color: darken($color: map-get($colors, main ), $amount: 6%); //20252a
+        background-color: darken(
+          $color: map-get($colors, main),
+          $amount: 6%
+        ); //20252a
         color: white;
 
         .fa-solid {
-          color: $third;
+          color: var(--third-color);
         }
       }
 

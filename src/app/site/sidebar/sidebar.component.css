@@ -1,4 +1,3 @@
-/* Sidebar styles */
 .sidebar {
   background-color: #2d353c;
   height: 93%;
@@ -7,7 +6,7 @@
   bottom: 0;
   left: 0;
   overflow-x: hidden;
-  overflow-y: auto; /* Enable vertical scroll */
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -45,7 +44,7 @@
   color: white;
 }
 .sidebar ul li a.active .fa-solid {
-  color: #49b6d6;
+  color: var(--third-color);
 }
 .sidebar ul li a:hover {
   color: white;

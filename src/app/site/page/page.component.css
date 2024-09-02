@@ -1,18 +1,18 @@
 div {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   height: 93%;
   width: 85%;
   position: absolute;
-  bottom: 0px ;
-  right: 0px ;
-  overflow-x: hidden; 
+  bottom: 0px;
+  right: 0px;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
 .page-title {
-  background-color: #dee2e6;
+  background-color: var(--page-light-mode-bg);
   height: 10%;
   width: 100%;
   text-align: left;
@@ -23,3 +23,5 @@ div {
   text-align: center;
   height: 100%;
 }
+
+/*# sourceMappingURL=page.component.css.map */
