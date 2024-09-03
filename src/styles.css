@@ -47,6 +47,7 @@ body {
   --widget-mat-table-dark-mode-body-bg: #adadad;
   --widget-mat-table-dark-mode-body-text: #161a1d;
   --widget-mat-table-dark-mode-border: 1px solid #161a1d;
+  --mat-sort-arrow-color: white;
 }
 
 body.dark-mode {
@@ -69,6 +70,7 @@ body.dark-mode {
   --widget-mat-table-body-bg: var(--widget-mat-table-dark-mode-body-bg);
   --widget-mat-table-body-text: var(--widget-mat-table-dark-mode-body-text);
   --widget-mat-table-border: var(--widget-mat-table-dark-mode-border);
+  --mat-sort-arrow-color: var(--third-color);
 }
 
 /*# sourceMappingURL=styles.css.map */
