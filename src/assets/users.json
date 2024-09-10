@@ -2,93 +2,93 @@
   "users": [
     {
       "ID": "1",
-      "name": "Karim",
-      "country": "Italy",
-      "age": "22"
+      "Name": "Karim",
+      "Country": "Italy",
+      "Age": "22"
     },
     {
       "ID": "2",
-      "name": "Amina",
-      "country": "Morocco",
-      "age": "25"
+      "Name": "Amina",
+      "Country": "Morocco",
+      "Age": "25"
     },
     {
       "ID": "3",
-      "name": "Luca",
-      "country": "Spain",
-      "age": "30"
+      "Name": "Luca",
+      "Country": "Spain",
+      "Age": "30"
     },
     {
       "ID": "4",
-      "name": "Nina",
-      "country": "Germany",
-      "age": "27"
+      "Name": "Nina",
+      "Country": "Germany",
+      "Age": "27"
     },
     {
       "ID": "5",
-      "name": "Yasmin",
-      "country": "Egypt",
-      "age": "29"
+      "Name": "Yasmin",
+      "Country": "Egypt",
+      "Age": "29"
     },
     {
       "ID": "6",
-      "name": "Omar",
-      "country": "France",
-      "age": "24"
+      "Name": "Omar",
+      "Country": "France",
+      "Age": "24"
     },
     {
       "ID": "7",
-      "name": "Sofia",
-      "country": "Portugal",
-      "age": "23"
+      "Name": "Sofia",
+      "Country": "Portugal",
+      "Age": "23"
     },
     {
       "ID": "8",
-      "name": "Ali",
-      "country": "Turkey",
-      "age": "26"
+      "Name": "Ali",
+      "Country": "Turkey",
+      "Age": "26"
     },
     {
       "ID": "9",
-      "name": "Zara",
-      "country": "UK",
-      "age": "21"
+      "Name": "Zara",
+      "Country": "UK",
+      "Age": "21"
     },
     {
       "ID": "10",
-      "name": "Ahmed",
-      "country": "USA",
-      "age": "28"
+      "Name": "Ahmed",
+      "Country": "USA",
+      "Age": "28"
     },
     {
       "ID": "11",
-      "name": "Layla",
-      "country": "Canada",
-      "age": "24"
+      "Name": "Layla",
+      "Country": "Canada",
+      "Age": "24"
     },
     {
       "ID": "12",
-      "name": "Hassan",
-      "country": "UAE",
-      "age": "31"
+      "Name": "Hassan",
+      "Country": "UAE",
+      "Age": "31"
     },
     {
       "ID": "13",
-      "name": "Maria",
-      "country": "Brazil",
-      "age": "27"
+      "Name": "Maria",
+      "Country": "Brazil",
+      "Age": "27"
     },
     {
       "ID": "14",
-      "name": "Javier",
-      "country": "Argentina",
-      "age": "29"
+      "Name": "Javier",
+      "Country": "Argentina",
+      "Age": "29"
     },
     {
       "ID": "15",
-      "name": "Fatima",
-      "country": "Saudi Arabia",
-      "age": "22"
+      "Name": "Fatima",
+      "Country": "Saudi Arabia",
+      "Age": "22"
     }
   ]
 }
