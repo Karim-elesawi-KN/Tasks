@@ -5,9 +5,9 @@
 </div>
 <!-- Table -->
 <div class="table-container">
-  <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="dataSource" matSort cdkDropListGroup>
     <!-- Select Column -->
-    <ng-container matColumnDef="Select">
+    <ng-container matColumnDef="Select" [sticky]="true">
       <th mat-header-cell *matHeaderCellDef>
         <mat-checkbox
           (change)="toggleSelectAll($event)"
@@ -18,26 +18,68 @@
         <mat-checkbox [(ngModel)]="element.selected"></mat-checkbox>
       </td>
     </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="ID" [sticky]="true">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        ID
+        <div
+          class="resize-handle"
+          (mousedown)="startResize($event, 'ID')"
+        ></div>
+      </th>
+      <td mat-cell *matCellDef="let user">{{ user.ID }}</td>
+    </ng-container>
     <!-- other columns -->
     <ng-container
-      *ngFor="let col of displayedColumns.slice(1, displayedColumns.length - 1)"
+      *ngFor="let col of displayedColumns.slice(2, displayedColumns.length - 2)"
       matColumnDef="{{ col }}"
-      [sticky]="col === 'Select' || col === 'ID'"
     >
-      <th mat-header-cell *matHeaderCellDef id="{{ col }}" mat-sort-header>
-        {{ col }}
+      <th
+        cdkDropList
+        mat-header-cell
+        *matHeaderCellDef
+        id="{{ col }}"
+        cdkDropListLockAxis="x"
+        cdkDropListOrientation="horizontal"
+        (cdkDropListDropped)="reorderColumns($event)"
+        mat-sort-header
+      >
+        <div
+          class="resize-handle"
+          (mousedown)="startResize($event, 'Name')"
+        ></div>
+
+        <div cdkDrag>
+          {{ col }}
+        </div>
         <button class="button" (click)="toggleFilter(col)">
           <i class="fa-solid fa-filter" *ngIf="!filterStates[col]"></i>
           <i class="fa-solid fa-xmark" *ngIf="filterStates[col]"></i>
         </button>
         <input
+          *ngIf="filterStates[col]"
           type="text"
-          hidden
           id="{{ col }}-filter"
           (input)="filterData(col, $event)"
         />
       </th>
       <td mat-cell *matCellDef="let element">{{ element[col] }}</td>
+    </ng-container>
+    <!-- Salary Column -->
+    <ng-container matColumnDef="Salary">
+      <th
+        cdkDropList
+        mat-header-cell
+        *matHeaderCellDef
+        cdkDropListLockAxis="x"
+        cdkDropListOrientation="horizontal"
+        (cdkDropListDropped)="reorderColumns($event)"
+      >
+        Salary
+      </th>
+      <td mat-cell *matCellDef="let row; let i = index">
+        {{ salaries[i] | currency }}
+      </td>
     </ng-container>
     <!-- Action Column -->
     <ng-container matColumnDef="Action">

@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -10,6 +17,11 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { EditRowDialog } from './edit-row-dialog';
 import { ChangeDetectionStrategy } from '@angular/core';
+import {
+  CdkDropListGroup,
+  DragDropModule,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-widget-users-mat-table',
@@ -21,18 +33,21 @@ import { ChangeDetectionStrategy } from '@angular/core';
     MatCheckboxModule,
     CommonModule,
     FormsModule,
+    CdkDropListGroup,
+    DragDropModule,
   ],
   templateUrl: './widget-users-mat-table.component.html',
   styleUrls: ['./widget-users-mat-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class WidgetUsersMatTableComponent implements OnInit {
+export class WidgetUsersMatTableComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'Select',
     'ID',
     'Name',
     'Country',
     'Age',
+    'Salary',
     'Action',
   ];
   dataSource = new MatTableDataSource<any>([]);
@@ -40,20 +55,44 @@ export class WidgetUsersMatTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   //constructor
-  constructor(private widgetService: WidgetService, public dialog: MatDialog) {}
+  constructor(
+    private widgetService: WidgetService,
+    public dialog: MatDialog,
+    private cdr: ChangeDetectorRef
+  ) {}
 
-  //loading users
   ngOnInit(): void {
     this.loadUserData();
     this.dataSource.filterPredicate = this.createFilter();
     this.displayedColumns.forEach((col) => (this.filterStates[col] = false));
+
+    this.restoreColumnWidths(); 
+    this.restoreColumnOrder();
+
+    setInterval(() => { 
+      this.salaries = this.salaries.map(() => this.generateRandomSalary());
+    }, 2);
   }
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+
+    this.restoreColumnWidths();
+    this.restoreSortingState();
+    this.sort.sortChange.subscribe(() => {
+      this.saveSortingState();
+    });
+  }
+
+  //loading users
   async loadUserData(): Promise<void> {
     await this.widgetService.loadUsers();
     const users = this.widgetService.getUsers();
     this.dataSource.data = users;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.salaries = this.dataSource.data.map(() => this.generateRandomSalary());
+    console.log(this.salaries);
   }
 
   //filtering
@@ -173,22 +212,113 @@ export class WidgetUsersMatTableComponent implements OnInit {
       }
     }
   }
-  // deleteSelected(): void {
-  //   const confirmDelete = confirm(
-  //     'Are you sure you want to delete the selected users?'
-  //   );
-  //   if (confirmDelete) {
-  //     this.dataSource.data = this.dataSource.data.filter(
-  //       (user) => !user.selected
-  //     );
-  //   }
-  // }
-  //   deleteAll(): void {
-  //   const confirmDelete = confirm(
-  //     'Are you sure you want to delete all the users?'
-  //   );
-  //   if (confirmDelete) {
-  //     this.dataSource.data = [];
-  //   }
-  // }
+  /*deleteSelected(): void {
+    const confirmDelete = confirm(
+      'Are you sure you want to delete the selected users?'
+    );
+    if (confirmDelete) {
+      this.dataSource.data = this.dataSource.data.filter(
+        (user) => !user.selected
+      );
+    }
+  }
+    deleteAll(): void {
+    const confirmDelete = confirm(
+      'Are you sure you want to delete all the users?'
+    );
+    if (confirmDelete) {
+      this.dataSource.data = [];
+    }
+  }*/
+
+  //reorder Columns
+  reorderColumns($event: {
+    previousContainer: { id: string };
+    container: { id: string };
+  }) {
+    const fromIndex = this.displayedColumns.indexOf(
+      $event.previousContainer.id
+    );
+    const toIndex = this.displayedColumns.indexOf($event.container.id);
+    moveItemInArray(this.displayedColumns, fromIndex, toIndex);
+    this.dataSource.data = [...this.dataSource.data];
+    localStorage.setItem(
+      this.columnOrderKey,
+      JSON.stringify(this.displayedColumns)
+    );
+  }
+
+  //salaries
+  salaries: number[] = [];
+  generateRandomSalary(): number {
+    return Math.floor(Math.random() * 100000) + 30000;
+  }
+
+  //saving and restoring table state
+  private columnOrderKey = 'columnOrder';
+  private sortingStateKey = 'sortingState';
+  private columnWidthsKey = 'columnWidths';
+  restoreColumnOrder(): void {
+    const savedColumnOrder = localStorage.getItem(this.columnOrderKey);
+    if (savedColumnOrder) {
+      this.displayedColumns = JSON.parse(savedColumnOrder);
+    }
+  }
+  saveSortingState() {
+    const sortingState = {
+      active: this.sort.active,
+      direction: this.sort.direction,
+    };
+    localStorage.setItem(this.sortingStateKey, JSON.stringify(sortingState));
+  }
+  restoreSortingState(): void {
+    const savedSortingState = localStorage.getItem(this.sortingStateKey);
+    if (savedSortingState) {
+      const { active, direction } = JSON.parse(savedSortingState);
+      this.sort.active = active;
+      this.sort.direction = direction;
+      this.dataSource.sort = this.sort;
+      this.cdr.detectChanges();
+    }
+  }
+  restoreColumnWidths(): void {
+    const savedWidths = localStorage.getItem(this.columnWidthsKey);
+    if (savedWidths) {
+      this.columnWidths = JSON.parse(savedWidths);
+      this.displayedColumns.forEach((column) => {
+        const th = document.getElementById(column);
+        if (th && this.columnWidths[column]) {
+          th.style.width = `${this.columnWidths[column]}px`;
+        }
+      });
+    }
+  }
+
+  //column resizing
+  columnWidths: { [key: string]: string } = {};
+  startResize(event: MouseEvent, column: string): void {
+    event.preventDefault();
+    const th = (event.target as HTMLElement).parentElement as HTMLElement;
+
+    const startX = event.pageX;
+    const startWidth = th.offsetWidth;
+
+    const onMouseMove = (moveEvent: MouseEvent) => {
+      const newWidth = startWidth + (moveEvent.pageX - startX);
+      th.style.width = `${newWidth}px`;
+      this.columnWidths[column] = newWidth.toString();
+    };
+
+    const onMouseUp = () => {
+      localStorage.setItem(
+        this.columnWidthsKey,
+        JSON.stringify(this.columnWidths)
+      );
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  }
 }

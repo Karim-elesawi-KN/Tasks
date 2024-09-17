@@ -1,0 +1,17 @@
+<div [ngClass]="languageClass">
+  <mat-form-field>
+    <mat-label>Select Hijri Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="dp"
+      (dateInput)="onDateChange($event)"
+      [value]="selectedDate"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp></mat-datepicker>
+  </mat-form-field>
+
+  <button class="button" mat-raised-button (click)="toggleLanguage()">
+    Toggle Language
+  </button>
+</div>

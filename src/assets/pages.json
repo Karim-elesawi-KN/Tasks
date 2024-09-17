@@ -19,6 +19,13 @@
           "rows": 1,
           "x": 2,
           "y": 0
+        },
+        {
+          "widgetContext": "widget-date-picker",
+          "cols": 3,
+          "rows": 3,
+          "x": 2,
+          "y": 2
         }
       ]
     },
@@ -44,7 +51,7 @@
       "pageContent": "call us.",
       "widgets": [
         {
-          "widgetContext": "widget-to-do-list",
+          "widgetContext": "widget-date-converter",
           "cols": 2,
           "rows": 3,
           "x": 1,

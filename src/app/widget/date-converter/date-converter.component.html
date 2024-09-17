@@ -1,0 +1,9 @@
+<app-gregoian-datepicker
+  [selectedDate]="gregorianDate"
+  (dateChange)="onGregorianDateChange($event)"
+></app-gregoian-datepicker>
+
+<app-hijri-datepicker
+  [selectedDate]="hijriDate"
+  (hijriDateChange)="onHijriDateChange($event)"
+></app-hijri-datepicker>

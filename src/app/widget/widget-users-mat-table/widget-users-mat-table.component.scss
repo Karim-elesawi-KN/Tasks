@@ -110,15 +110,18 @@
 
 .table-container {
   width: 100%;
-  overflow: auto;
   position: relative;
+  border-radius: 7px;
+  overflow-x: auto;
 
   table {
+    overflow-y: auto;
     width: 100%;
     border-collapse: collapse;
     background-color: var(--widget-mat-table-bg);
 
     .mat-mdc-header-row {
+      border-radius: 7px;
       position: sticky;
       top: 0;
       z-index: 10;
@@ -128,17 +131,36 @@
       font-weight: 450;
       text-align: left;
 
+      .resize-handle {
+        display: inline-block;
+        width: 5px;
+        height: 100%;
+        background-color: transparent;
+        cursor: col-resize;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+      }
+      th {
+        position: relative;
+      }
+
       &.sticky {
+        border-radius: 7px;
         position: sticky;
         left: 0;
         z-index: 11;
       }
       .button {
+        border-radius: 7px;
+        border-color: transparent;
+        margin-left: 4px;
+        margin-right: 4px;
         background-color: var(--widget-mat-table-body-bg);
       }
       .fa-solid {
         color: var(--widget-mat-table-body-text);
-
         i {
           font-size: 14px;
         }
@@ -171,8 +193,6 @@
       color: var(--widget-mat-table-body-text);
 
       &.sticky {
-        position: sticky;
-        background-color: inherit; 
         z-index: 11;
       }
     }

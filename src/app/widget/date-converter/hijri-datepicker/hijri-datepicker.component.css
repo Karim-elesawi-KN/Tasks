@@ -1,0 +1,11 @@
+::ng-deep .mat-calendar .mat-calendar-body-cell-content {
+  font-size: 11.5px;
+}
+
+::ng-deep .mat-calendar .mat-calendar-body-label {
+  font-size: 12px;
+}
+
+.button {
+  margin-left: 20px;
+}

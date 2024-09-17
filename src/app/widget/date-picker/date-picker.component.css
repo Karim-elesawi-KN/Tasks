@@ -1,0 +1,59 @@
+.date-picker-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  padding: 20px;
+}
+.date-picker-container .gregorian-container,
+.date-picker-container .hijri-container {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 80%;
+}
+.date-picker-container .gregorian-container .form-field,
+.date-picker-container .hijri-container .form-field {
+  width: 100%;
+}
+.date-picker-container .gregorian-container .form-field mat-form-field,
+.date-picker-container .hijri-container .form-field mat-form-field {
+  width: 100%;
+}
+.date-picker-container .gregorian-container .form-field .button,
+.date-picker-container .hijri-container .form-field .button {
+  background-color: rgba(183, 65, 65, 0);
+  border: none;
+  padding: 11px;
+  border-radius: 100%;
+}
+.date-picker-container .gregorian-container .form-field .button:hover,
+.date-picker-container .hijri-container .form-field .button:hover {
+  background-color: rgba(134, 140, 155, 0.2039215686);
+}
+.date-picker-container .gregorian-container .form-field .button .fa-regular,
+.date-picker-container .hijri-container .form-field .button .fa-regular {
+  font-size: 20px;
+  color: #44474e;
+}
+.date-picker-container .modal-content {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.date-picker-container .modal-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.date-picker-container .modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+body modal-open {
+  margin-left: 500px;
+}
+
+/*# sourceMappingURL=date-picker.component.css.map */

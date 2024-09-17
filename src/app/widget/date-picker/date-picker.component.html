@@ -1,0 +1,33 @@
+<div class="date-picker-container">
+  <!-- Gregorian Datepicker -->
+  <mat-form-field appearance="fill">
+    <mat-label>Gregorian Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="gregorianPicker"
+      [(ngModel)]="gregorianDate"
+      (dateChange)="convertDate($event.value, 'hijri')"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="gregorianPicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #gregorianPicker></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Hijri Datepicker -->
+  <mat-form-field appearance="fill">
+    <mat-label>Hijri Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="hijriPicker"
+      [(ngModel)]="hijriDate"
+      (dateChange)="convertDate($event.value, 'gregorian')"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="hijriPicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #hijriPicker></mat-datepicker>
+  </mat-form-field>
+</div>

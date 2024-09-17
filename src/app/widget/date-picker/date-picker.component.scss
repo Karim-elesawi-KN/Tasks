@@ -1,0 +1,60 @@
+.date-picker-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  padding: 20px;
+
+  .gregorian-container,
+  .hijri-container {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 80%;
+
+    .form-field {
+      width: 100%;
+      mat-form-field {
+        width: 100%;
+      }
+
+      .button {
+        background-color: #b7414100;
+        border: none;
+        padding: 11px;
+        border-radius: 100%;
+
+        &:hover {
+          background-color: #868c9b34;
+        }
+
+        .fa-regular {
+          font-size: 20px;
+          color: #44474e;
+        }
+      }
+    }
+  }
+
+ 
+  .modal-content {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+
+  .modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+body modal-open{
+    margin-left: 500px;
+  }
