@@ -4,7 +4,6 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  inject,
   Input,
   OnInit,
   Output,
@@ -59,30 +58,11 @@ export const CUSTOM_HIJRI_DATE_FORMATS = {
 export class HijriDatepickerComponent implements OnInit {
   @Output() hijriDateChange = new EventEmitter<string>();
   @Input() selectedDate: string | undefined;
-  private readonly _adapter = inject<DateAdapter<moment.Moment>>(
-    DateAdapter
-  ) as CustomHijriDateAdapter;
-  languageClass = 'arabic';
-
-  constructor(private cdr: ChangeDetectorRef) {}
+  @Input() languageClass: string | undefined;
 
   ngOnInit() {
     const todayHijri = moment().format('iYYYY/iM/iD');
-    moment.locale(locale);
-  }
-
-  toggleLanguage() {
-    this._adapter.toggleLanguage();
-    if (this.languageClass === 'arabic') {
-      this.languageClass = 'english';
-      this._adapter.setLocale('en');
-      moment.locale('en');
-    } else {
-      this.languageClass = 'arabic';
-      this._adapter.setLocale('ar-SA');
-      moment.locale('ar-SA');
-    }
-    this.cdr.detectChanges();
+    moment.locale(this.languageClass === 'arabic' ? 'ar' : 'en');
   }
 
   onDateChange(event: any): void {
