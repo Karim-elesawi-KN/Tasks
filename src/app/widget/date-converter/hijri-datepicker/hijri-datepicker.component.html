@@ -1,13 +1,12 @@
-<div>
-  <mat-form-field>
-    <mat-label>Select Hijri Date</mat-label>
-    <input
-      matInput
-      [matDatepicker]="dp"
-      (dateInput)="onDateChange($event)"
-      [value]="selectedDate"
-    />
-    <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-    <mat-datepicker #dp></mat-datepicker>
-  </mat-form-field>
-</div>
+<mat-form-field>
+  <mat-label>Select Hijri Date</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    (dateInput)="onDateChange($event)"
+    [value]="selectedDate"
+
+  />
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

@@ -1,15 +1,18 @@
 <app-gregoian-datepicker
   [selectedDate]="gregorianDate"
-  [languageClass]="languageClass"
+  [isArabic]="isArabic"
   (dateChange)="onGregorianDateChange($event)"
 ></app-gregoian-datepicker>
 
 <app-hijri-datepicker
   [selectedDate]="hijriDate"
-  [languageClass]="languageClass"
+  [isArabic]="isArabic"
   (hijriDateChange)="onHijriDateChange($event)"
 ></app-hijri-datepicker>
 
 <button class="button" mat-raised-button (click)="toggleLanguage()">
   Toggle Language
+</button>
+<button class="button" mat-raised-button (click)="clear()">
+  <i class="fa-regular fa-calendar-xmark"></i> Clear
 </button>

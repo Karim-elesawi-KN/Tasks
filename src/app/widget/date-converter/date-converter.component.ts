@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HijriDatepickerComponent } from './hijri-datepicker/hijri-datepicker.component';
 import { GregoianDatepickerComponent } from './gregoian-datepicker/gregoian-datepicker.component';
 import momentGregorian from 'moment';
@@ -13,28 +13,28 @@ import momentHijri from 'moment-hijri';
 })
 export class DateConverterComponent {
   gregorianDate: Date | undefined = new Date();
-  hijriDate: string = '';
+  hijriDate: Date | undefined = new Date();
 
-  onHijriDateChange(newHijriDate: string): void {
-    const hijri = momentGregorian(newHijriDate, 'iYYYY/iM/iD');
+  onHijriDateChange(newHijriDate: Date): void {
+    const hijri = momentGregorian(newHijriDate, 'iM/iD/iYYYY');
     this.gregorianDate = hijri.toDate();
+    console.log('Converted Gregorian Date:', this.gregorianDate);
   }
 
   onGregorianDateChange(newGregorianDate: Date): void {
-    const hijri = momentHijri(newGregorianDate).format('iYYYY/iM/iD');
-    this.hijriDate = hijri;
-
+    let hijri = momentHijri(newGregorianDate).format('iM/iD/iYYYY');
+    const momentDate = momentGregorian(hijri, 'MM-DD-YYYY');
+    this.hijriDate = momentDate.toDate();
     console.log('Converted Hijri Date:', this.hijriDate);
   }
 
-  languageClass = 'arabic';
-  toggleLanguage() {
-    if (this.languageClass === 'arabic') {
-      this.languageClass = 'english';
-      momentHijri.locale('en');
-    } else {
-      this.languageClass = 'arabic';
-      momentHijri.locale('ar-SA');
-    }
+  clear() {
+    this.gregorianDate = undefined;
+    this.hijriDate = undefined;
+  }
+
+  isArabic = false;
+  toggleLanguage(): void {
+    this.isArabic = !this.isArabic;
   }
 }

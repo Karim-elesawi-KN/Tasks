@@ -18,7 +18,7 @@ export class CustomHijriDateAdapter extends DateAdapter<moment.Moment> {
     'ذو القعدة',
     'ذو الحجة',
   ];
-  private readonly weekdays = ['س', 'ج', 'خ', 'ر', 'ث', 'ن', 'ح'];
+  private readonly weekdays = ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'];
 
   private readonly hijriMonthsEN = [
     'Muharram',
@@ -35,13 +35,13 @@ export class CustomHijriDateAdapter extends DateAdapter<moment.Moment> {
     'Dhu al-Hijjah',
   ];
   private readonly weekdaysEN = [
-    'Sat',
     'Sun',
     'Mon',
     'Tue',
     'Wed',
     'Thu',
     'Fri',
+    'Sat',
   ];
 
   private isArabic = true;
@@ -62,13 +62,24 @@ export class CustomHijriDateAdapter extends DateAdapter<moment.Moment> {
     return this.isArabic ? this.hijriMonths : this.hijriMonthsEN;
   }
   override getDateNames(): string[] {
-    return Array.from({ length: 30 }, (_, i) => String(i + 1));
+    const dates = Array.from({ length: 30 }, (_, i) => String(i + 1));
+    if (this.isArabic) {
+      return dates.map((date) =>
+        date.replace(/\d/g, (digit) => this.convertToArabicNumber(digit))
+      );
+    }
+    return dates;
   }
   override getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
-    return this.isArabic ? this.weekdays : this.weekdaysEN;
+    const weekdays = this.isArabic ? this.weekdays : this.weekdaysEN;
+    return weekdays;
   }
   override getYearName(date: Moment): string {
-    return `${date.iYear()}`;
+    let year = date.iYear().toString();
+    if (this.isArabic) {
+      year = year.replace(/\d/g, (digit) => this.convertToArabicNumber(digit));
+    }
+    return year;
   }
   override getFirstDayOfWeek(): number {
     return 0;
@@ -94,7 +105,15 @@ export class CustomHijriDateAdapter extends DateAdapter<moment.Moment> {
     return null;
   }
   override format(date: Moment, displayFormat: any): string {
-    return date.format(displayFormat);
+    let formattedDate = date.format(displayFormat);
+    if (this.isArabic) {
+      const arabicNumerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+      formattedDate = formattedDate.replace(
+        /\d/g,
+        (digit) => arabicNumerals[Number(digit)]
+      );
+    }
+    return formattedDate;
   }
   override addCalendarYears(date: Moment, years: number): Moment {
     return date.add(years, 'iYear');
@@ -120,5 +139,10 @@ export class CustomHijriDateAdapter extends DateAdapter<moment.Moment> {
 
   toggleLanguage() {
     this.isArabic = !this.isArabic;
+  }
+
+  private convertToArabicNumber(digit: string): string {
+    const arabicNumerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    return arabicNumerals[Number(digit)];
   }
 }
