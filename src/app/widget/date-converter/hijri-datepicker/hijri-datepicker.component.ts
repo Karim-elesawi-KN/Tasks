@@ -1,36 +1,34 @@
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   inject,
   Input,
   OnInit,
   Output,
-  signal,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import moment, { Moment } from 'moment';
+import 'moment/locale/ar-SA';
+import 'moment/locale/en-gb';
+
 import { CustomHijriDateAdapter } from '../hijri-date-adapter';
-import { default as _rollupMoment, locale } from 'moment';
 import momentHijri from 'moment-hijri';
-import momentGregorian from 'moment';
 
 export const CUSTOM_HIJRI_DATE_FORMATS = {
   parse: {
-    dateInput: 'iM/iD/iYYYY',
+    dateInput: 'iD/iM/iYYYY',
   },
   display: {
-    dateInput: 'iM/iD/iYYYY',
-    monthYearLabel: 'iYYYY iMMMM',
-    dateA11yLabel: 'iM/iD/iYYYY',
-    monthYearA11yLabel: 'iYYYY iMMMM',
+    dateInput: 'iMMM iD iYYYY',
+    monthYearLabel: 'iMMM iYYYY',
+    dateA11yLabel: 'iD/iM/iYYYY',
+    monthYearA11yLabel: 'iMMM iYYYY',
   },
 };
 
@@ -43,26 +41,43 @@ export const CUSTOM_HIJRI_DATE_FORMATS = {
     MatDatepickerModule,
     MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     { provide: DateAdapter, useClass: CustomHijriDateAdapter },
     { provide: MAT_DATE_FORMATS, useValue: CUSTOM_HIJRI_DATE_FORMATS },
   ],
   templateUrl: './hijri-datepicker.component.html',
   styleUrl: './hijri-datepicker.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HijriDatepickerComponent implements OnInit {
-  @Input() selectedDate: Date | undefined;
-  @Output() hijriDateChange = new EventEmitter<Date>();
+  @Input() selectedDate = new FormControl(momentHijri(new Date()));
+  @Output() hijriDateChange = new EventEmitter<Moment>();
+  private readonly _adapter =
+    inject<DateAdapter<unknown, unknown>>(DateAdapter);
 
   constructor(private dateAdapter: DateAdapter<any>) {}
 
   ngOnInit() {
-    let hijri = momentHijri(this.selectedDate).format('iYYYY/iM/iD');
-    const momentDate = momentGregorian(hijri, 'iYYYY-iMM-iDD');
-    this.selectedDate = momentDate.toDate();
-    console.log(this.selectedDate);
+    const hijriMoment = momentHijri(this.selectedDate.value);
+    console.log('first:', hijriMoment);
+    const hijriDateObject = {
+      year: hijriMoment.iYear(),
+      month: hijriMoment.iMonth() + 1,
+      day: hijriMoment.iDate(),
+    };
+    console.log('second', hijriDateObject);
+    console.log(
+      'now hijri alt:',
+      this.selectedDate.value!.format('ddd iMMM iD iYYYY HH:mm:ss Z')
+    );
+    const x = momentHijri(
+      `${hijriDateObject.year}-${hijriDateObject.month}-${hijriDateObject.day}`,
+      'iYYYY-iM-iD'
+    );
+    console.log('third', x);
+    this.selectedDate.setValue(x);
   }
 
   onDateChange(event: any): void {
@@ -70,19 +85,10 @@ export class HijriDatepickerComponent implements OnInit {
     this.hijriDateChange.emit(hijriDate);
   }
 
-  private readonly _locale = signal(inject<unknown>(MAT_DATE_LOCALE));
-  private readonly _adapter =
-    inject<DateAdapter<unknown, unknown>>(DateAdapter);
-  @Input() isArabic: boolean = false;
+  @Input() isArabic!: boolean;
   ngOnChanges(): void {
     const customAdapter = this.dateAdapter as CustomHijriDateAdapter;
     customAdapter.toggleLanguage();
-    if (this.isArabic) {
-      this._locale.set('ar-SA');
-      this._adapter.setLocale(this._locale);
-    } else {
-      this._locale.set('en-EG');
-      this._adapter.setLocale(this._locale);
-    }
+    this._adapter.setLocale(this.isArabic ? 'ar-SA' : 'en-EG');
   }
 }

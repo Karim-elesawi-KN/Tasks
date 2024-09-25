@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 import moment from 'moment-hijri';
 
 import 'moment-hijri';
+import { ReactiveFormComponent } from '../widget/reactive-form/reactive-form.component';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,7 @@ export class WidgetService {
     'widget-users-mat-table': WidgetUsersMatTableComponent,
     'widget-date-picker': DatePickerComponent,
     'widget-date-converter': DateConverterComponent,
+    'widget-reactive-form': ReactiveFormComponent
   };
 
   getComponent(widgetContext: string): Type<any> | null {

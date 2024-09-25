@@ -1,0 +1,39 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" placeholder="Enter your name" />
+    <mat-error *ngIf="formGroup.controls['name'].hasError('required')">
+      Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Phone Number</mat-label>
+    <input
+      matInput
+      formControlName="phoneNumber"
+      placeholder="Enter your phone number"
+    />
+    <mat-error *ngIf="formGroup.controls['phoneNumber'].hasError('required')">
+      Phone number is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Birthday</mat-label>
+    <!-- Using DateConverterComponent here -->
+    <app-hijri-datepicker formControlName="birthday"></app-hijri-datepicker>
+    <mat-error *ngIf="formGroup.controls['birthday'].hasError('required')">
+      Birthday is required
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="formGroup.invalid"
+  >
+    Submit
+  </button>
+</form>

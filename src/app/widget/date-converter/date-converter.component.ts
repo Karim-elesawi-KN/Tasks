@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HijriDatepickerComponent } from './hijri-datepicker/hijri-datepicker.component';
 import { GregoianDatepickerComponent } from './gregoian-datepicker/gregoian-datepicker.component';
-import momentGregorian from 'moment';
+import momentGregorian, { Moment } from 'moment';
 import momentHijri from 'moment-hijri';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'widget-date-converter',
@@ -10,27 +11,28 @@ import momentHijri from 'moment-hijri';
   imports: [HijriDatepickerComponent, GregoianDatepickerComponent],
   templateUrl: './date-converter.component.html',
   styleUrl: './date-converter.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateConverterComponent {
-  gregorianDate: Date | undefined = new Date();
-  hijriDate: Date | undefined = new Date();
+  gregorianDate = new FormControl(momentGregorian());
+  hijriDate = new FormControl(momentHijri());
 
-  onHijriDateChange(newHijriDate: Date): void {
-    const hijri = momentGregorian(newHijriDate, 'iM/iD/iYYYY');
-    this.gregorianDate = hijri.toDate();
-    console.log('Converted Gregorian Date:', this.gregorianDate);
+  onHijriDateChange(newHijriDate: Moment): void {
+    const hijriMoment = momentGregorian(newHijriDate);
+    this.gregorianDate.setValue(hijriMoment);
+    console.log('Converted Hijri to Gregorian:', this.gregorianDate);
   }
 
-  onGregorianDateChange(newGregorianDate: Date): void {
-    let hijri = momentHijri(newGregorianDate).format('iM/iD/iYYYY');
-    const momentDate = momentGregorian(hijri, 'MM-DD-YYYY');
-    this.hijriDate = momentDate.toDate();
-    console.log('Converted Hijri Date:', this.hijriDate);
+  onGregorianDateChange(newGregorianDate: Moment): void {
+    const gregorianMoment = momentHijri(newGregorianDate);
+    this.hijriDate.setValue(gregorianMoment);
+    console.log('Converted Gregorian to Hijri:', this.hijriDate);
   }
 
   clear() {
-    this.gregorianDate = undefined;
-    this.hijriDate = undefined;
+    this.gregorianDate.reset();
+    this.hijriDate.reset();
+    console.log('Dates cleared');
   }
 
   isArabic = false;

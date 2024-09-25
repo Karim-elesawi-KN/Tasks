@@ -3,8 +3,8 @@
   <input
     matInput
     [matDatepicker]="picker"
-    (dateInput)="onDateChange($event)"
-    [value]="selectedDate"
+    (dateChange)="onDateChange($event)"
+    [formControl]="selectedDate"
   />
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
